@@ -27,6 +27,7 @@ public class LibraryTest {
     private PrintStream printStream;
     private Library library;
     private DateTimeFormatter dateTimeFormatter;
+    private DateTime time;
 
     @Before
     public void setUp() {
@@ -34,6 +35,7 @@ public class LibraryTest {
         printStream = mock(PrintStream.class);
         dateTimeFormatter = mock(DateTimeFormatter.class);
         library = new Library(books, printStream, dateTimeFormatter);
+        time = new DateTime();
     }
 
 
@@ -89,7 +91,6 @@ public class LibraryTest {
     public void shouldWelcomeUser() {
         // We don't need to mock DateTime because it is a value object
         // We can't mock it because it is a final class
-        DateTime time = new DateTime();
         
         library.welcome(time);
         
@@ -98,7 +99,6 @@ public class LibraryTest {
 
     @Test
     public void shouldDisplayFormattedTimeWhenFormattedTimeIsAnEmptyString() {
-        DateTime time = new DateTime();
 
         when(dateTimeFormatter.print(time)).thenReturn("");
 
@@ -113,7 +113,6 @@ public class LibraryTest {
 
         // implement me
         // then move common test variables into a setup method
-        DateTime time = new DateTime();
 
         when(dateTimeFormatter.print(time)).thenReturn("local time.");
 
