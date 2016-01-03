@@ -65,6 +65,16 @@ public class LibraryTest {
 
         when(reader.readLine()).thenReturn("1", "2");
         // implement me
+        String firstTitle = "First Book Title";
+        String secondTitle = "Second Book Title";
+
+        books.add(firstTitle);
+        books.add(secondTitle);
+
+        library.listBooks();
+
+        verify(printStream).println("First Book Title");
+        verify(printStream).println("Second Book Title");
     }
 
     /*
