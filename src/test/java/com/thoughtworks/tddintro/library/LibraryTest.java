@@ -105,6 +105,7 @@ public class LibraryTest {
         library.welcome(time);
 
         // add a verify here
+        verify(printStream).println(contains("Welcome"));
     }
 
     @Test
@@ -112,5 +113,12 @@ public class LibraryTest {
 
         // implement me
         // then move common test variables into a setup method
+        DateTime time = new DateTime();
+
+        when(dateTimeFormatter.print(time)).thenReturn("local time.");
+
+        library.welcome(time);
+
+        verify(printStream).println(contains("local time."));
     }
 }
